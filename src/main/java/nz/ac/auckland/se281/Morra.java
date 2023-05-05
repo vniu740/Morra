@@ -8,6 +8,7 @@ public class Morra {
   }
 
   private int roundCounter;
+  private String playerName;
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
 
@@ -16,6 +17,9 @@ public class Morra {
 
     // Print the message to welcome the player
     MessageCli.WELCOME_PLAYER.printMessage(options[0]);
+
+    // Save the player name
+    playerName = options[0];
 
   }
 
@@ -40,6 +44,7 @@ public class Morra {
           && (arrayFingersSumInput[1].matches("\\d+"))
           && ((Integer.parseInt(arrayFingersSumInput[0]) >= 1) && (Integer.parseInt(arrayFingersSumInput[0]) <= 5))
           && ((Integer.parseInt(arrayFingersSumInput[1]) >= 1) && (Integer.parseInt(arrayFingersSumInput[1]) <= 10))) {
+        MessageCli.PRINT_INFO_HAND.printMessage(playerName, arrayFingersSumInput[0], arrayFingersSumInput[1]);
         areInputsValid = true;
       } else {
         MessageCli.INVALID_INPUT.printMessage();
