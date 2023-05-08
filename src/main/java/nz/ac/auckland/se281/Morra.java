@@ -28,10 +28,6 @@ public class Morra {
 
   public void play() {
 
-    // Print round being played
-    MessageCli.START_ROUND.printMessage(String.valueOf(roundCounter));
-    roundCounter++;
-
     // Print give fingers and sum inputs
     MessageCli.ASK_INPUT.printMessage();
     String fingersSumInputString = Utils.scanner.nextLine();
@@ -48,40 +44,71 @@ public class Morra {
           && ((Integer.parseInt(arrayFingersSumInput[0]) >= 1) && (Integer.parseInt(arrayFingersSumInput[0]) <= 5))
           && ((Integer.parseInt(arrayFingersSumInput[1]) >= 1) && (Integer.parseInt(arrayFingersSumInput[1]) <= 10))) {
         MessageCli.PRINT_INFO_HAND.printMessage(playerName, arrayFingersSumInput[0], arrayFingersSumInput[1]);
+
+        // Print round being played
+        MessageCli.START_ROUND.printMessage(String.valueOf(roundCounter));
+        roundCounter++;
+
+        // Get jarvis' values according to the difficulty level
+        jarvisValues = currentDifficultyLevel.playUsingLevel();
+        // Display Jarvis' values
+        MessageCli.PRINT_INFO_HAND.printMessage("Jarvis", String.valueOf(jarvisValues[0]),
+            String.valueOf(jarvisValues[1]));
+
+        findResultOfRound(Integer.parseInt(arrayFingersSumInput[0]), Integer.parseInt(arrayFingersSumInput[1]),
+            jarvisValues[0], jarvisValues[1]);
+
         areInputsValid = true;
+
       } else {
         MessageCli.INVALID_INPUT.printMessage();
         fingersSumInputString = Utils.scanner.nextLine();
       }
     }
 
-    jarvisValues = currentDifficultyLevel.playUsingLevel();
-
   }
 
   public DifficultyLevel createLevel(Difficulty level) {
 
     switch (level) {
-        case EASY:
-            return new EasyDifficultyLevel();
+      case EASY:
+        return new EasyDifficultyLevel();
 
-        case HARD:
-            // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
-            return new EasyDifficultyLevel();
+      case HARD:
+        // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
+        return new EasyDifficultyLevel();
 
-        case MASTER:
-            // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
-            return new EasyDifficultyLevel();
+      case MASTER:
+        // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
+        return new EasyDifficultyLevel();
 
-        case MEDIUM:
-            // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
-            return new EasyDifficultyLevel();
+      case MEDIUM:
+        // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
+        return new EasyDifficultyLevel();
 
     }
     return null;
 
-}
+  }
 
+  public void findResultOfRound(int humanFingers, int humanSum, int jarvisFingers, int jarvisSum) {
+
+    int trueSum = humanFingers + jarvisFingers;
+
+    if ((trueSum == humanSum) && (trueSum == jarvisFingers)) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
+      return;
+    }
+    if (trueSum == humanSum) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
+    }
+    if (trueSum == jarvisSum) {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
+    } else {
+      MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
+    }
+
+  }
 
   public void showStats() {
   }
