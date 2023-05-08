@@ -4,7 +4,7 @@ public class EasyDifficultyLevel implements DifficultyLevel {
 
     @Override
     public Integer[] playUsingLevel() {
-        CPU easyStrategy = new CPU(new RandomStrategy());
+        StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
 
         return easyStrategy.jarvisPlays();
     }
