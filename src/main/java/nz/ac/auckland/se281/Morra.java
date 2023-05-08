@@ -10,6 +10,7 @@ public class Morra {
   private int roundCounter;
   private String playerName;
   private DifficultyLevel currentDifficultyLevel;
+  private Integer[] jarvisValues;
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
 
@@ -52,8 +53,10 @@ public class Morra {
         MessageCli.INVALID_INPUT.printMessage();
         fingersSumInputString = Utils.scanner.nextLine();
       }
-
     }
+
+    jarvisValues = currentDifficultyLevel.playUsingLevel();
+
   }
 
   public DifficultyLevel createLevel(Difficulty level) {

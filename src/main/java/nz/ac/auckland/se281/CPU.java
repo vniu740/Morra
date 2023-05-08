@@ -8,7 +8,7 @@ public class CPU {
         this.strategy = strategy;
     }
 
-    public String[] jarvisPlays() {
+    public Integer[] jarvisPlays() {
         return strategy.decideSumAndFingers();
     }
 }
