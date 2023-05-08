@@ -9,6 +9,7 @@ public class Morra {
 
   private int roundCounter;
   private String playerName;
+  private DifficultyLevel currentDifficultyLevel;
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
 
@@ -21,6 +22,7 @@ public class Morra {
     // Save the player name
     playerName = options[0];
 
+    currentDifficultyLevel = createLevel(difficulty);
   }
 
   public void play() {
@@ -53,6 +55,30 @@ public class Morra {
 
     }
   }
+
+  public DifficultyLevel createLevel(Difficulty level) {
+
+    switch (level) {
+        case EASY:
+            return new EasyDifficultyLevel();
+
+        case HARD:
+            // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
+            return new EasyDifficultyLevel();
+
+        case MASTER:
+            // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
+            return new EasyDifficultyLevel();
+
+        case MEDIUM:
+            // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
+            return new EasyDifficultyLevel();
+
+    }
+    return null;
+
+}
+
 
   public void showStats() {
   }
