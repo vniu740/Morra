@@ -4,8 +4,8 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 public class Morra {
 
-  public Morra() {
-  }
+  // public Morra() {
+  // }
 
   private int roundCounter;
   private String playerName;

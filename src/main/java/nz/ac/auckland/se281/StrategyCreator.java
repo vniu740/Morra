@@ -1,10 +1,10 @@
 package nz.ac.auckland.se281;
 
-public class CPU {
+public class StrategyCreator {
 
     private Strategy strategy;
 
-    public CPU(Strategy strategy) {
+    public StrategyCreator(Strategy strategy) {
         this.strategy = strategy;
     }
 

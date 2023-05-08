@@ -7,5 +7,5 @@ public class AverageStrategy implements Strategy {
         // TODO Auto-generated method stub
         throw new UnsupportedOperationException("Unimplemented method 'decideSumAndFingers'");
     }
-    
+
 }
