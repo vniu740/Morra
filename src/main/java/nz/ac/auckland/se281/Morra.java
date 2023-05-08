@@ -34,6 +34,10 @@ public class Morra {
 
     boolean areInputsValid = false;
 
+    // Print round being played
+    MessageCli.START_ROUND.printMessage(String.valueOf(roundCounter));
+    roundCounter++;
+
     while (areInputsValid == false) {
       // Split the input string into an array of string of the numbers (seperating by
       // white space)
@@ -45,17 +49,15 @@ public class Morra {
           && ((Integer.parseInt(arrayFingersSumInput[1]) >= 1) && (Integer.parseInt(arrayFingersSumInput[1]) <= 10))) {
         MessageCli.PRINT_INFO_HAND.printMessage(playerName, arrayFingersSumInput[0], arrayFingersSumInput[1]);
 
-        // Print round being played
-        MessageCli.START_ROUND.printMessage(String.valueOf(roundCounter));
-        roundCounter++;
-
         // Get jarvis' values according to the difficulty level
         jarvisValues = currentDifficultyLevel.playUsingLevel();
         // Display Jarvis' values
-        MessageCli.PRINT_INFO_HAND.printMessage("Jarvis", String.valueOf(jarvisValues[0]),
+        MessageCli.PRINT_INFO_HAND.printMessage("Jarvis",
+            String.valueOf(jarvisValues[0]),
             String.valueOf(jarvisValues[1]));
 
-        findResultOfRound(Integer.parseInt(arrayFingersSumInput[0]), Integer.parseInt(arrayFingersSumInput[1]),
+        findResultOfRound(Integer.parseInt(arrayFingersSumInput[0]),
+            Integer.parseInt(arrayFingersSumInput[1]),
             jarvisValues[0], jarvisValues[1]);
 
         areInputsValid = true;
