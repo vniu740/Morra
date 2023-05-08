@@ -40,8 +40,8 @@ public class Morra {
       // white space)
       String[] arrayFingersSumInput = fingersSumInputString.split("\\s+");
 
-      if ((arrayFingersSumInput.length == 2) && (arrayFingersSumInput[0].matches("\\d+"))
-          && (arrayFingersSumInput[1].matches("\\d+"))
+      if ((arrayFingersSumInput.length == 2) && (Utils.isInteger(arrayFingersSumInput[0]) == true)
+          && (Utils.isInteger(arrayFingersSumInput[1]) == true)
           && ((Integer.parseInt(arrayFingersSumInput[0]) >= 1) && (Integer.parseInt(arrayFingersSumInput[0]) <= 5))
           && ((Integer.parseInt(arrayFingersSumInput[1]) >= 1) && (Integer.parseInt(arrayFingersSumInput[1]) <= 10))) {
         MessageCli.PRINT_INFO_HAND.printMessage(playerName, arrayFingersSumInput[0], arrayFingersSumInput[1]);
