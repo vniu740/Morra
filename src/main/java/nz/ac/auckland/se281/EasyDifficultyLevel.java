@@ -1,12 +1,13 @@
 package nz.ac.auckland.se281;
 
 public class EasyDifficultyLevel implements DifficultyLevel {
+    StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
 
     @Override
-    public Integer[] playUsingLevel(Integer currentRound, Integer humanFingers) {
-        StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
+    public Integer[] playUsingLevel(Integer humanFingers) {
 
         return easyStrategy.jarvisPlays(humanFingers);
+
     }
 
 }

@@ -1,5 +1,6 @@
 package nz.ac.auckland.se281;
 
+
 import nz.ac.auckland.se281.Main.Difficulty;
 
 public class Morra {
@@ -49,7 +50,7 @@ public class Morra {
         MessageCli.PRINT_INFO_HAND.printMessage(playerName, arrayFingersSumInput[0], arrayFingersSumInput[1]);
 
         // Get jarvis' values according to the difficulty level
-        jarvisValues = currentDifficultyLevel.playUsingLevel(roundCounter, Integer.parseInt(arrayFingersSumInput[0]));
+        jarvisValues = currentDifficultyLevel.playUsingLevel(Integer.parseInt(arrayFingersSumInput[0]));
         // Display Jarvis' values
         MessageCli.PRINT_INFO_HAND.printMessage("Jarvis",
             String.valueOf(jarvisValues[0]),

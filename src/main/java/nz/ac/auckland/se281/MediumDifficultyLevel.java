@@ -1,19 +1,32 @@
 package nz.ac.auckland.se281;
 
-public class MediumDifficultyLevel implements DifficultyLevel{
+import java.util.ArrayList;
+
+public class MediumDifficultyLevel implements DifficultyLevel {
+    ArrayList<Integer> listOfHumanFingers = new ArrayList<>();
+    StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
+    StrategyCreator averageStrategy = new StrategyCreator(new AverageStrategy());
 
     @Override
-    public Integer[] playUsingLevel(Integer currentRound, Integer humanFingers) {
-        StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
-        StrategyCreator averageStrategy = new StrategyCreator(new AverageStrategy());
+    public Integer[] playUsingLevel(Integer humanFingers) {
+        double humanAvg = 0;
 
-        if (currentRound <= 3) {
+        // add the human's finger input to the arraylist
+        listOfHumanFingers.add(humanFingers);
+
+        if (listOfHumanFingers.size() <= 3) {
             return easyStrategy.jarvisPlays(humanFingers);
         } else {
-            return averageStrategy.jarvisPlays(humanFingers);
+            // calculate the sum of the fingers, excluding the current round
+            for (int i = 0; i < (listOfHumanFingers.size() - 1); i++) {
+                humanAvg += listOfHumanFingers.get(i);
+            }
+            // Calculate the average
+            humanAvg = humanAvg / (listOfHumanFingers.size() - 1);
+            humanAvg = Math.round(humanAvg);
+
+            return averageStrategy.jarvisPlays((int) humanAvg);
         }
     }
 
-    public 
-    
 }

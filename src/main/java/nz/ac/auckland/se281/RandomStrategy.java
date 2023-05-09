@@ -6,7 +6,7 @@ public class RandomStrategy implements Strategy {
     private int jarvisSum;
 
     @Override
-    public Integer[] decideSumAndFingers(Integer humanFingers) {
+    public Integer[] decideSumAndFingers(int humanFingers) {
         jarvisFingers = Utils.getRandomNumber(1, 5);
         jarvisSum = Utils.getRandomNumber((jarvisFingers + 1), (jarvisFingers + 5));
 
