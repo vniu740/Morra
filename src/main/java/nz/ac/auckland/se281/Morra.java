@@ -78,8 +78,7 @@ public class Morra {
         return new EasyDifficultyLevel();
 
       case HARD:
-        // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
-        return new EasyDifficultyLevel();
+        return new HardDifficultyLevel();
 
       case MASTER:
         // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
