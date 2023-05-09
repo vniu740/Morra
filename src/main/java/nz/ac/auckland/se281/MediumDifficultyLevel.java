@@ -3,9 +3,9 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 
 public class MediumDifficultyLevel implements DifficultyLevel {
-    ArrayList<Integer> listOfHumanFingers = new ArrayList<>();
-    StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
-    StrategyCreator averageStrategy = new StrategyCreator(new AverageStrategy());
+    private ArrayList<Integer> listOfHumanFingers = new ArrayList<>();
+    private StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
+    private StrategyCreator averageStrategy = new StrategyCreator(new AverageStrategy());
 
     @Override
     public Integer[] playUsingLevel(Integer humanFingers) {

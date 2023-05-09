@@ -3,10 +3,10 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 
 public class HardDifficultyLevel implements DifficultyLevel {
-    ArrayList<Integer> listOfHumanFingers = new ArrayList<>();
-    ArrayList<Integer> listHumanFingersAppearences;
-    StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
-    StrategyCreator topStrategy = new StrategyCreator(new TopStrategy());
+    private ArrayList<Integer> listOfHumanFingers = new ArrayList<>();
+    private ArrayList<Integer> listHumanFingersAppearences;
+    private StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
+    private StrategyCreator topStrategy = new StrategyCreator(new TopStrategy());
 
     @Override
     public Integer[] playUsingLevel(Integer humanFingers) {

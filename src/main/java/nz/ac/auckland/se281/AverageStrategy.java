@@ -10,7 +10,7 @@ public class AverageStrategy implements Strategy {
         jarvisFingers = Utils.getRandomNumber(1, 5);
         jarvisSum = jarvisFingers + average;
 
-        return new Integer[] { jarvisFingers, jarvisSum };
+        return new Integer[] {jarvisFingers, jarvisSum };
 
     }
 
