@@ -7,9 +7,9 @@ public class TopStrategy implements Strategy {
         Integer jarvisFingers;
         Integer jarvisSum;
 
-            jarvisFingers = Utils.getRandomNumber(1, 5);
-            jarvisSum = jarvisFingers + top;
+        jarvisFingers = Utils.getRandomNumber(1, 5);
+        jarvisSum = jarvisFingers + top;
 
-            return new Integer[] {jarvisFingers, jarvisSum };
+        return new Integer[] { jarvisFingers, jarvisSum };
     }
 }

@@ -1,6 +1,5 @@
 package nz.ac.auckland.se281;
 
-
 public class AverageStrategy implements Strategy {
 
     @Override
@@ -8,12 +7,11 @@ public class AverageStrategy implements Strategy {
         Integer jarvisFingers;
         Integer jarvisSum;
 
-            jarvisFingers = Utils.getRandomNumber(1, 5);
-            jarvisSum = jarvisFingers + average;
+        jarvisFingers = Utils.getRandomNumber(1, 5);
+        jarvisSum = jarvisFingers + average;
 
-            return new Integer[] {jarvisFingers, jarvisSum };
-
-        }
+        return new Integer[] { jarvisFingers, jarvisSum };
 
     }
 
+}
