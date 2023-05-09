@@ -8,7 +8,7 @@ public class StrategyCreator {
         this.strategy = strategy;
     }
 
-    public Integer[] jarvisPlays() {
-        return strategy.decideSumAndFingers();
+    public Integer[] jarvisPlays(Integer humanFingers) {
+        return strategy.decideSumAndFingers(humanFingers);
     }
 }

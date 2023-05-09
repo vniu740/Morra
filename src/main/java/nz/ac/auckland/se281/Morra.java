@@ -36,7 +36,6 @@ public class Morra {
 
     // Print round being played
     MessageCli.START_ROUND.printMessage(String.valueOf(roundCounter));
-    roundCounter++;
 
     while (areInputsValid == false) {
       // Split the input string into an array of string of the numbers (seperating by
@@ -50,7 +49,7 @@ public class Morra {
         MessageCli.PRINT_INFO_HAND.printMessage(playerName, arrayFingersSumInput[0], arrayFingersSumInput[1]);
 
         // Get jarvis' values according to the difficulty level
-        jarvisValues = currentDifficultyLevel.playUsingLevel();
+        jarvisValues = currentDifficultyLevel.playUsingLevel(roundCounter, Integer.parseInt(arrayFingersSumInput[0]));
         // Display Jarvis' values
         MessageCli.PRINT_INFO_HAND.printMessage("Jarvis",
             String.valueOf(jarvisValues[0]),
@@ -60,6 +59,7 @@ public class Morra {
             Integer.parseInt(arrayFingersSumInput[1]),
             jarvisValues[0], jarvisValues[1]);
 
+        roundCounter++;
         areInputsValid = true;
 
       } else {
@@ -85,8 +85,7 @@ public class Morra {
         return new EasyDifficultyLevel();
 
       case MEDIUM:
-        // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
-        return new EasyDifficultyLevel();
+        return new MediumDifficultyLevel();
 
     }
     return null;
