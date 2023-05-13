@@ -3,8 +3,11 @@ package nz.ac.auckland.se281;
 import java.util.ArrayList;
 
 public class MediumDifficultyLevel implements DifficultyLevel {
+  // Create new randomStrategy Instance and averageStrategy Instance for this specific
+  // HardDifficultyLevel
+  // Create new ArrayList to store the human's inputs
   private ArrayList<Integer> listOfHumanFingers = new ArrayList<>();
-  private StrategyCreator easyStrategy = new StrategyCreator(new RandomStrategy());
+  private StrategyCreator randomStrategy = new StrategyCreator(new RandomStrategy());
   private StrategyCreator averageStrategy = new StrategyCreator(new AverageStrategy());
 
   @Override
@@ -14,8 +17,9 @@ public class MediumDifficultyLevel implements DifficultyLevel {
     // add the human's finger input to the arraylist
     listOfHumanFingers.add(humanFingers);
 
+    // if the round is less than or equal to 3, then use the randomStrategy 
     if (listOfHumanFingers.size() <= 3) {
-      return easyStrategy.jarvisPlays(humanFingers);
+      return randomStrategy.jarvisPlays(humanFingers);
     } else {
       // calculate the sum of the fingers, excluding the current round
       for (int i = 0; i < (listOfHumanFingers.size() - 1); i++) {
@@ -25,6 +29,7 @@ public class MediumDifficultyLevel implements DifficultyLevel {
       humanAvg = humanAvg / (listOfHumanFingers.size() - 1);
       humanAvg = Math.round(humanAvg);
 
+      // call jarvisPlays() on the average strategy from StrategyCreator.java
       return averageStrategy.jarvisPlays((int) humanAvg);
     }
   }
