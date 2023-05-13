@@ -27,16 +27,12 @@ public class Morra {
     // Create a new difficulty level specific to the users input
     currentDifficultyLevel = createLevel(difficulty);
 
-    // Set isGameInPlay to true
     isGameInPlay = true;
 
-    // Set numberOfRoundsPlayerInput to the players input
     numberOfPointsPlayerInput = pointsToWin;
 
-    // Set numberOfJarvisWins to 0
     numberOfJarvisWins = 0;
 
-    // Set numberOfPlayerWins to 0
     numberOfPlayerWins = 0;
   }
 
@@ -62,11 +58,15 @@ public class Morra {
       // white space)
       String[] arrayFingersSumInput = fingersSumInputString.split("\\s+");
 
+      // Check if the inputs are correct
       if ((arrayFingersSumInput.length == 2) && (Utils.isInteger(arrayFingersSumInput[0]) == true)
           && (Utils.isInteger(arrayFingersSumInput[1]) == true)
           && ((Integer.parseInt(arrayFingersSumInput[0]) >= 1) && (Integer.parseInt(arrayFingersSumInput[0]) <= 5))
           && ((Integer.parseInt(arrayFingersSumInput[1]) >= 1) && (Integer.parseInt(arrayFingersSumInput[1]) <= 10))) {
         MessageCli.PRINT_INFO_HAND.printMessage(playerName, arrayFingersSumInput[0], arrayFingersSumInput[1]);
+
+        int fingersInput = Integer.parseInt(arrayFingersSumInput[0]);
+        int sumInput = Integer.parseInt(arrayFingersSumInput[1]);
 
         // Get jarvis' values according to the difficulty level
         jarvisValues = currentDifficultyLevel.playUsingLevel(Integer.parseInt(arrayFingersSumInput[0]));
@@ -75,10 +75,8 @@ public class Morra {
             String.valueOf(jarvisValues[0]),
             String.valueOf(jarvisValues[1]));
 
-        findResultOfRound(Integer.parseInt(arrayFingersSumInput[0]),
-            Integer.parseInt(arrayFingersSumInput[1]),
-            jarvisValues[0], jarvisValues[1]);
-
+        // Find who won the result
+        findResultOfRound(fingersInput, sumInput, jarvisValues[0], jarvisValues[1]);
         roundCounter++;
         isInputsValid = true;
 
@@ -95,6 +93,7 @@ public class Morra {
         }
 
       } else {
+        // Print invalid input message and ask for new inputs, repeat while loop
         MessageCli.INVALID_INPUT.printMessage();
         fingersSumInputString = Utils.scanner.nextLine();
       }
@@ -102,18 +101,23 @@ public class Morra {
 
   }
 
+  // Method for determining which DifficultyLevel Instance should be created
   public DifficultyLevel createLevel(Difficulty level) {
 
     switch (level) {
+      // If input is easy, create new EasyDifficultyLevel instance
       case EASY:
         return new EasyDifficultyLevel();
 
+      // If input is hard, create new HardDifficultyLevel instance
       case HARD:
         return new HardDifficultyLevel();
 
+      // If input is Master, create new MasterDifficultyLevel instance
       case MASTER:
         return new MasterDifficultyLevel();
 
+      // If input is medium, create new MediumDifficultyLevel instance
       case MEDIUM:
         return new MediumDifficultyLevel();
 
@@ -122,25 +126,35 @@ public class Morra {
 
   }
 
+  // Method to determine who won the round played
   public void findResultOfRound(int humanFingers, int humanSum, int jarvisFingers, int jarvisSum) {
 
     int trueSum = humanFingers + jarvisFingers;
 
+    // If both the human and Jarvis guessed the sum of the fingers, print DRAW and
+    // return
     if ((trueSum == humanSum) && (trueSum == jarvisSum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
       return;
     }
+
+    // If the human guessed the sum of the fingers, print HUMAN_WINS and increase
+    // their playerWins by 1 and return
     if (trueSum == humanSum) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
       numberOfPlayerWins++;
       return;
     }
+
+    // If Jarvis guessed the sum of the fingers, print AI_WINS and increase
+    // their jarvisWins by 1 and return
     if (trueSum == jarvisSum) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
       numberOfJarvisWins++;
       return;
     }
 
+    // If none of the above criteria are met, print DRAW
     MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
   }
 
