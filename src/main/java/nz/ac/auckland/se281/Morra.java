@@ -5,6 +5,9 @@ import nz.ac.auckland.se281.Main.Difficulty;
 public class Morra {
 
   private int roundCounter;
+  private int numberOfJarvisWins;
+  private int numberOfPlayerWins;
+  private int numberOfPointsPlayerInput;
   private String playerName;
   private DifficultyLevel currentDifficultyLevel;
   private Integer[] jarvisValues;
@@ -26,6 +29,15 @@ public class Morra {
 
     // Set isGameInPlay to true
     isGameInPlay = true;
+
+    // Set numberOfRoundsPlayerInput to the players input
+    numberOfPointsPlayerInput = pointsToWin;
+
+    // Set numberOfJarvisWins to 0
+    numberOfJarvisWins = 0;
+
+    // Set numberOfPlayerWins to 0
+    numberOfPlayerWins = 0;
   }
 
   public void play() {
@@ -70,6 +82,18 @@ public class Morra {
         roundCounter++;
         isInputsValid = true;
 
+        // Check if any player has won the game
+        if ((numberOfJarvisWins == numberOfPointsPlayerInput) || (numberOfPlayerWins == numberOfPointsPlayerInput)) {
+          if (numberOfJarvisWins == numberOfPointsPlayerInput) {
+            MessageCli.END_GAME.printMessage("Jarvis", String.valueOf(roundCounter - 1));
+            isGameInPlay = false;
+          } else {
+            MessageCli.END_GAME.printMessage(playerName, String.valueOf(roundCounter - 1));
+            isGameInPlay = false;
+          }
+
+        }
+
       } else {
         MessageCli.INVALID_INPUT.printMessage();
         fingersSumInputString = Utils.scanner.nextLine();
@@ -108,10 +132,12 @@ public class Morra {
     }
     if (trueSum == humanSum) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
+      numberOfPlayerWins++;
       return;
     }
     if (trueSum == jarvisSum) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
+      numberOfJarvisWins++;
       return;
     }
 
