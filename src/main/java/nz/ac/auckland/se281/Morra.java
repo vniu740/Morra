@@ -145,5 +145,17 @@ public class Morra {
   }
 
   public void showStats() {
+    // Check if a game is running, if not print message and return out of method
+    if (isGameInPlay == false) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
+    // Print the message for number of Player wins and needed points to win
+    MessageCli.PRINT_PLAYER_WINS.printMessage(playerName, String.valueOf(numberOfPlayerWins),
+        String.valueOf(numberOfPointsPlayerInput - numberOfPlayerWins));
+
+    // Print the message for number of Jarvis wins and needed points to win
+    MessageCli.PRINT_PLAYER_WINS.printMessage("Jarvis", String.valueOf(numberOfJarvisWins),
+        String.valueOf(numberOfPointsPlayerInput - numberOfJarvisWins));
   }
 }
