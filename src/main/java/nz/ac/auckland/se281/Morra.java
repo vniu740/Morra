@@ -12,6 +12,7 @@ public class Morra {
   private DifficultyLevel currentDifficultyLevel;
   private Integer[] jarvisValues;
 
+
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
 
     // Set the round to 1
@@ -23,6 +24,7 @@ public class Morra {
     // Save the player name
     playerName = options[0];
 
+    // Create a new difficulty level specific to the users input
     currentDifficultyLevel = createLevel(difficulty);
   }
 
@@ -32,12 +34,12 @@ public class Morra {
     MessageCli.ASK_INPUT.printMessage();
     String fingersSumInputString = Utils.scanner.nextLine();
 
-    boolean areInputsValid = false;
+    boolean isInputsValid = false;
 
     // Print round being played
     MessageCli.START_ROUND.printMessage(String.valueOf(roundCounter));
 
-    while (areInputsValid == false) {
+    while (isInputsValid == false) {
       // Split the input string into an array of string of the numbers (seperating by
       // white space)
       String[] arrayFingersSumInput = fingersSumInputString.split("\\s+");
@@ -60,7 +62,7 @@ public class Morra {
             jarvisValues[0], jarvisValues[1]);
 
         roundCounter++;
-        areInputsValid = true;
+        isInputsValid = true;
 
       } else {
         MessageCli.INVALID_INPUT.printMessage();
@@ -80,8 +82,7 @@ public class Morra {
         return new HardDifficultyLevel();
 
       case MASTER:
-        // TODO CHANGE RETURN TYPE WHEN LEVELS ARE CREATED
-        return new EasyDifficultyLevel();
+        return new MasterDifficultyLevel();
 
       case MEDIUM:
         return new MediumDifficultyLevel();
@@ -95,19 +96,20 @@ public class Morra {
 
     int trueSum = humanFingers + jarvisFingers;
 
-    if ((trueSum == humanSum) && (trueSum == jarvisFingers)) {
+    if ((trueSum == humanSum) && (trueSum == jarvisSum)) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
       return;
     }
     if (trueSum == humanSum) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("HUMAN_WINS");
+      return;
     }
     if (trueSum == jarvisSum) {
       MessageCli.PRINT_OUTCOME_ROUND.printMessage("AI_WINS");
-    } else {
-      MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
+      return;
     }
 
+    MessageCli.PRINT_OUTCOME_ROUND.printMessage("DRAW");
   }
 
   public void showStats() {
