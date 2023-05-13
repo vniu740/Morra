@@ -4,14 +4,11 @@ import nz.ac.auckland.se281.Main.Difficulty;
 
 public class Morra {
 
-  // public Morra() {
-  // }
-
   private int roundCounter;
   private String playerName;
   private DifficultyLevel currentDifficultyLevel;
   private Integer[] jarvisValues;
-
+  private boolean isGameInPlay = false;
 
   public void newGame(Difficulty difficulty, int pointsToWin, String[] options) {
 
@@ -26,9 +23,18 @@ public class Morra {
 
     // Create a new difficulty level specific to the users input
     currentDifficultyLevel = createLevel(difficulty);
+
+    // Set isGameInPlay to true
+    isGameInPlay = true;
   }
 
   public void play() {
+
+    // Check if a game has started, if not do not continue with code
+    if (isGameInPlay == false) {
+      MessageCli.GAME_NOT_STARTED.printMessage();
+      return;
+    }
 
     // Print give fingers and sum inputs
     MessageCli.ASK_INPUT.printMessage();
