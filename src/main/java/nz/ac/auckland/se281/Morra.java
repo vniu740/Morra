@@ -2,10 +2,7 @@ package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Difficulty;
 import nz.ac.auckland.se281.level.DifficultyLevel;
-import nz.ac.auckland.se281.level.EasyDifficultyLevel;
-import nz.ac.auckland.se281.level.HardDifficultyLevel;
-import nz.ac.auckland.se281.level.MasterDifficultyLevel;
-import nz.ac.auckland.se281.level.MediumDifficultyLevel;
+import nz.ac.auckland.se281.level.DifficultyLevelFactory;
 
 public class Morra {
 
@@ -30,7 +27,7 @@ public class Morra {
     playerName = options[0];
 
     // Create a new difficulty level specific to the users input
-    currentDifficultyLevel = createLevel(difficulty);
+    currentDifficultyLevel = DifficultyLevelFactory.createLevel(difficulty);
 
     isGameInPlay = true;
 
@@ -103,31 +100,6 @@ public class Morra {
         fingersSumInputString = Utils.scanner.nextLine();
       }
     }
-
-  }
-
-  // Method for determining which DifficultyLevel Instance should be created
-  public DifficultyLevel createLevel(Difficulty level) {
-
-    switch (level) {
-      // If input is easy, create new EasyDifficultyLevel instance
-      case EASY:
-        return new EasyDifficultyLevel();
-
-      // If input is hard, create new HardDifficultyLevel instance
-      case HARD:
-        return new HardDifficultyLevel();
-
-      // If input is Master, create new MasterDifficultyLevel instance
-      case MASTER:
-        return new MasterDifficultyLevel();
-
-      // If input is medium, create new MediumDifficultyLevel instance
-      case MEDIUM:
-        return new MediumDifficultyLevel();
-
-    }
-    return null;
 
   }
 
