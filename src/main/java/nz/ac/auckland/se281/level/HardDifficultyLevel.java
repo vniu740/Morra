@@ -1,6 +1,10 @@
-package nz.ac.auckland.se281;
+package nz.ac.auckland.se281.level;
 
 import java.util.ArrayList;
+
+import nz.ac.auckland.se281.strategy.RandomStrategy;
+import nz.ac.auckland.se281.strategy.StrategyCreator;
+import nz.ac.auckland.se281.strategy.TopStrategy;
 
 public class HardDifficultyLevel implements DifficultyLevel {
   // Create new randomStrategy Instance and topStrategy Instance for this specific

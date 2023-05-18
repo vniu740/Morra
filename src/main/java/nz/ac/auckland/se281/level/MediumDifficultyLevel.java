@@ -1,6 +1,10 @@
-package nz.ac.auckland.se281;
+package nz.ac.auckland.se281.level;
 
 import java.util.ArrayList;
+
+import nz.ac.auckland.se281.strategy.AverageStrategy;
+import nz.ac.auckland.se281.strategy.RandomStrategy;
+import nz.ac.auckland.se281.strategy.StrategyCreator;
 
 public class MediumDifficultyLevel implements DifficultyLevel {
   // Create new randomStrategy Instance and averageStrategy Instance for this specific

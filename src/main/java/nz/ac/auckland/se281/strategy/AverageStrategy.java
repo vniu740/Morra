@@ -1,4 +1,6 @@
-package nz.ac.auckland.se281;
+package nz.ac.auckland.se281.strategy;
+
+import nz.ac.auckland.se281.Utils;
 
 public class AverageStrategy implements Strategy {
 

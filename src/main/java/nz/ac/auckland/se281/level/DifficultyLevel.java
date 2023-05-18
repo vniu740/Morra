@@ -1,4 +1,4 @@
-package nz.ac.auckland.se281;
+package nz.ac.auckland.se281.level;
 
 public interface DifficultyLevel {
 

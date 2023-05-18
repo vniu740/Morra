@@ -1,6 +1,11 @@
 package nz.ac.auckland.se281;
 
 import nz.ac.auckland.se281.Main.Difficulty;
+import nz.ac.auckland.se281.level.DifficultyLevel;
+import nz.ac.auckland.se281.level.EasyDifficultyLevel;
+import nz.ac.auckland.se281.level.HardDifficultyLevel;
+import nz.ac.auckland.se281.level.MasterDifficultyLevel;
+import nz.ac.auckland.se281.level.MediumDifficultyLevel;
 
 public class Morra {
 
